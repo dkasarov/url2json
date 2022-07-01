@@ -1,8 +1,9 @@
+// inspired by curl2scrapy https://github.com/michael-shub/curl2scrapy
+
 var urlField = $('#url');
 var jsonField = $('#json');
 var btn = $('#btn');
 
-// All together.
 function url2json(urlText) {
   try {
     queryString = urlText.split('?')[1]
