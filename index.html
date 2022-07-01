@@ -30,7 +30,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col text-center">
+            <div class="col-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exclude_api_key" value="api_key" onchange="exclude_key(this)">
+                    <label class="form-check-label" for="exclude_api_key">Exclude api_key</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exclude_url" value="url" onchange="exclude_key(this)">
+                    <label class="form-check-label" for="exclude_url">Exclude url</label>
+                </div>
+            </div>
+            <div class="col">
                 <button type="button" class="btn btn-primary" id="btn">Translate</button>
             </div>
         </div>

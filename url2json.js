@@ -3,6 +3,7 @@
 var urlField = $('#url');
 var jsonField = $('#json');
 var btn = $('#btn');
+var excludeKeys = []
 
 function url2json(urlText) {
   try {
@@ -12,6 +13,7 @@ function url2json(urlText) {
     const entries = urlParams.entries();
     var obj = {};
     for (const entry of entries) {
+      if (excludeKeys.includes(entry[0])) { continue; }
       obj[entry[0]] = entry[1];
     }
     jsonField.val(JSON.stringify(obj, null, 4));
@@ -45,4 +47,16 @@ urlField.keydown(function (e) {
 // Button click
 btn.click(function (e) {
   url2json(urlField.val());
-})
+});
+
+function exclude_key(e) {
+  if (e.checked) {
+    excludeKeys.push(e.value);
+  } else {
+    const index = excludeKeys.indexOf(e.value);
+    if (index > -1) {
+      excludeKeys.splice(index, 1);
+    }
+  }
+  url2json(urlField.val());
+};
