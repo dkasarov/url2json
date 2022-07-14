@@ -2,6 +2,7 @@
 
 var urlField = $('#url');
 var jsonField = $('#json');
+var urlLink = $('#url-link a');
 var btn = $('#btn');
 var excludeKeys = []
 
@@ -13,6 +14,10 @@ function url2json(urlText) {
     const entries = urlParams.entries();
     var obj = {};
     for (const entry of entries) {
+      if (entry[0] == 'url') {
+        urlLink.text(entry[1]);
+        urlLink.attr('href', entry[1]);
+      }
       if (excludeKeys.includes(entry[0])) { continue; }
       obj[entry[0]] = entry[1];
     }
